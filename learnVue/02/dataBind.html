@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learnVue</title>
+    <!-- 引入Vue文件 -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+
+    <div class="root">
+        <!-- 普通写法 -->
+        <!-- 只读取，修改数据不影响Vue实例中的值 -->
+         <!-- 使用v-bind -->
+        单向数据绑定：<input type="text" v-bind:value="name"/>
+        <hr/>
+        <!-- 读写，会影响Vue实例中的值 -->
+            <!-- 使用v-model -->
+        双向数据绑定：<input type="text" v-model:value="name"/>
+
+        <!-- 简写 -->
+        单向数据绑定：<input type="text" :value="name"/>
+        双向数据绑定：<input type="text" v-model:="name"/>
+
+        <!-- 以下代码是错误的，因为v-model只能应用在表单类元素（输入类元素）上 -->
+        <!-- <h2 v-model:x="name">你好</h2> -->
+        <!-- 因为是作用在交互组件上 -->
+   </div>
+
+    <!--阻止Vue开始时产生的生产提示  -->
+    <script type="text/javascript" >
+        Vue.config.productionTip = false
+        // 创建Vue实例 只传一个参数 
+        // 容器和Vue实例必须是一一对应的关系
+        new Vue({
+            el:'.root', 
+            data:{
+                name:'jensen',
+            }
+        })
+    </script>
+    
+</body>
+</html>
