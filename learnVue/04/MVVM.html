@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learnVue</title>
+    <!-- 引入Vue文件 -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <!-- View -->
+    <div class="root">
+        <!-- 插值语法能用于所以Vue实例有的属性 -->
+        <h1>Hello {{set.name}}</h1>
+        <a v-bind:href="url">林进新的个人导航</a>
+        <!-- 简写方式 直接使用冒号 -->
+        <!-- <a :href="url">林进新的个人导航</a> -->
+    </div>
+
+    <!--阻止Vue开始时产生的生产提示  -->
+    <script type="text/javascript" >
+        Vue.config.productionTip = false
+        // 创建Vue实例 只传一个参数 
+        // 容器和Vue实例必须是一一对应的关系
+        // ViewModel 常用vm来指代Vue实例
+        const vm = new Vue({
+            el: '.root', // el用于指定当前Vue实例为哪个容器服务，值通常为CSS选择器字符串
+            // Model
+            data: { // data中用于存储数据，数据供el所指定的容器上去使用
+                name:'jensen',
+                url:"https://www.linjinxin.site",
+                set:{
+                    name:'kevin',
+                    age: 18
+                }
+            }
+        })
+    </script>
+</body>
+</html>
