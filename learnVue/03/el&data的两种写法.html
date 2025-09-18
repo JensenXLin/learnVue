@@ -20,8 +20,8 @@
             <!-- 使用v-model -->
         双向数据绑定：<input type="text" v-model:value="name"/>
 
-        <!-- 简写
-        单向数据绑定：<input type="text" :value="name"/>
+        <!-- 简写 -->
+        <!-- 单向数据绑定：<input type="text" :value="name"/>
         双向数据绑定：<input type="text" v-model:="name"/> -->
 
         <!-- 以下代码是错误的，因为v-model只能应用在表单类元素（输入类元素）上 -->
@@ -34,12 +34,40 @@
         Vue.config.productionTip = false
         // 创建Vue实例 只传一个参数 
         // 容器和Vue实例必须是一一对应的关系
-        new Vue({
-            el:'.root', 
-            data:{
-                name:'jensen',
+        const v = new Vue({
+            // el:'.root', 
+            // data的两种写法
+            // 第一种写法：对象式写法
+            /*
+                data:{
+                    name:'jensen'
+                }
+            */
+            // 第二种写法
+            // 可通过this看到，调用者是Vue实例
+            // 一定不要用箭头函数，因为箭头函数自身没有this 会指向window
+            // 简便写法
+            data(){
+                return {
+                    name:'jensen'
+                }
             }
+            // 或者这样
+            // data:function(){
+            //     return {
+            //         name:'jensen'
+            //     }
+            // }
+            
         })
+        // 输出Vue实例
+        console.log(v)
+
+        // el的第二种写法
+        // 通过实例中的属性指定绑定对象
+        v.$mount('.root')
+        // 更灵活 可以配合其他JS函数使用
+
     </script>
     
 </body>
