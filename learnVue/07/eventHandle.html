@@ -10,24 +10,43 @@
     <div id="root">
         <h2>Welcome {{name}}</h2>
         <button v-on:click="showInfo">点我提示信息</button>
+        <!-- 简写形式 @ -->
+         <!-- 用$event占位作为第二个参数，否则会丢 -->
+        <button @click="showInfo2(123,$event)">点我提示信息（简化）</button>
+        
+        <!-- 事件修饰符 -->
+         <!-- 用prevent修饰，默认行为阻止 -->
+          <!-- 
+            Vue 中的事件修饰符：
+                prevent：阻止默认事件（常用）
+                stop：阻止事件冒泡（常用）
+                once：事件只触发一次（常用）
+                capture：使用事件的捕获模式
+                self：只有event.target是当前操作的元素才触发事件
+                passive：事件的默认行为立即执行，无需等待事件回调执行完毕 -->
+         <a href="https://www.baidu.com" @click.prevent="showInfo">点我不会跳转</a>
+        
     </div>
 </body>
 <script type="text/javascript" >
     Vue.config.productionTip = false
-
-    function showInfo(){
-
-    }
-    const v = new Vue({
-        el: '#root',
-        data: {
-            name:'jensen'
+    const vm = new Vue({
+        el:"#root",
+        data:{
+            name:"Jensen"
         },
         methods:{
             showInfo(){
-                alert('Welcome ' + this.name);
+                // console.log(this) //此处的this是vm
+                // console.log(a,b,c) //a是事件  
+                // console.log(event.target.innerText)
+                alert('some message')
+            },
+            showInfo2(number, event){
+                alert(number)
+                // 但是把第一个固定参数event搞没了
             }
         }
-    });
+    })
 </script>
 </html>
